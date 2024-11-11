@@ -53,6 +53,10 @@ services:
         <<: *DEFAULT_BUILD_ARGS
     environment:
       DATABASE_HOST: 'db'
+    volumes:
+      - ./:/app
+    working_dir: /app
+    user: 1000:1000
 
   ci:
     image: "${REGISTRY:-docker.io}/${NAMESPACE:-symfonywithswoole}/${IMAGE:-swoole-bundle}-ci:${TAG:-local}"
